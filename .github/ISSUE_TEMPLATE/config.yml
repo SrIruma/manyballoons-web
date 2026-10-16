@@ -1,0 +1,12 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and support
+    url: https://github.com/SrIruma/manyballoons-web/discussions
+    about: Ask questions and get help from the community.
+  - name: Documentation
+    url: https://sriruma.github.io/manyballoons-web/
+    about: Setup, commands, permissions, balloons, animations and the API.
+  # Add a "Buy ManyBalloons" link here once the BuiltByBit resource exists:
+  # - name: Buy ManyBalloons
+  #   url: <resource-url>
+  #   about: Purchase the plugin on BuiltByBit.

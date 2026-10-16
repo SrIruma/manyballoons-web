@@ -1,0 +1,84 @@
+[CENTER][SIZE=6][B][COLOR=#2BB0FF]ManyBalloons[/COLOR][/B][/SIZE]
+[SIZE=4]Cosmetic floating balloons with real ropes, living physics and custom models.[/SIZE][/CENTER]
+[HR]
+[B][SIZE=5]Give every player a balloon that actually moves[/SIZE][/B]
+ManyBalloons tethers a custom balloon model to each player with a real rope. It swings when they run, drifts in the wind, floats up in water and trembles when danger is close, so it feels alive instead of glued in place.
+
+Every balloon and every motion is defined in simple YAML files, so you can shape your own models and animations without writing a line of code.
+
+[B][SIZE=4][COLOR=#2BB0FF]Key Features[/COLOR][/SIZE][/B]
+[B]Custom models[/B]
+Textured heads, item displays, or a composite model built from as many parts as you like.
+
+[B]Real rope[/B]
+An invisible leashed entity draws the string, so the balloon is tethered correctly from every angle.
+
+[B]17 balloons in 3 categories[/B]
+Classic, Cute and Space ship by default, ready to hand out or sell.
+
+[B]Living physics[/B]
+Swinging, trailing and buoyancy, plus ambient wind that strengthens in rain and thunder.
+
+[B]Reactions[/B]
+A shove when you take damage, extra lift while you swim and a tremble near hostile mobs.
+
+[B]YAML animations[/B]
+Seven channels and six wave shapes. The included Solar System is a working orrery, not a decoration.
+
+[B]Flipbook models[/B]
+Cycle a list of frames to animate a static model.
+
+[B]Wear several at once[/B]
+Set a limit in the config and raise it per player with a permission node.
+
+[B]Clean in-game UI[/B]
+A category menu, a searchable catalogue and an admin list to manage players.
+
+[B]Fully configurable & multilingual[/B]
+Supports English, Spanish, German, French, Italian, Dutch, Polish, Brazilian Portuguese and Russian.
+
+[B]Optional crafting[/B]
+Give any balloon a shaped or shapeless recipe to obtain it in-game.
+
+[B]No resource pack needed[/B]
+Every texture is embedded in the plugin, so players install nothing.
+
+[B]Developer friendly[/B]
+A free Java API with cancelable events, plus PlaceholderAPI placeholders.
+
+[HR]
+[B][SIZE=4][COLOR=#2BB0FF]Commands[/COLOR][/SIZE][/B]
+[CODE]/balloons
+/balloons set <id> [player]
+/balloons clear [player]
+/balloons manage
+/balloons reload[/CODE]
+
+Type [CODE]/balloons[/CODE] in-game to open the menu and pick a balloon.
+[B][SIZE=4][COLOR=#2BB0FF]Permissions[/COLOR][/SIZE][/B]
+[CODE]manyballoons.use
+manyballoons.admin
+manyballoons.balloon.<id>
+manyballoons.slots.<n>[/CODE]
+
+[CODE]manyballoons.use[/CODE] is granted to everyone by default. Each balloon needs its own [CODE]manyballoons.balloon.<id>[/CODE] node, which is what lets you sell them; set a balloon to public if you want it free for all. [CODE]manyballoons.admin[/CODE] gives access to everything at once.
+
+[B][SIZE=4][COLOR=#2BB0FF]Requirements[/COLOR][/SIZE][COLOR=#2BB0FF][/COLOR][/B]
+[LIST]
+[*]Paper 1.21+
+[*]Java 21+
+[*]PlaceholderAPI (optional, only for the placeholders)
+[/LIST]
+
+[B][SIZE=4][COLOR=#2BB0FF]Notes[/COLOR][/SIZE][/B]
+[LIST]
+[*]No resource pack is required; all textures ship inside the plugin.
+[*]Folia is not supported; run it on Paper.
+[*]Balloons and animations are plain YAML files under plugins/ManyBalloons/.
+[*]Run /balloons reload after editing any file — no restart needed.
+[*]Tune the physics, wind and reactions in the config after your first install.
+[/LIST]
+
+[B]Designed for servers that want to reward their players with something lively, playful and polished.[/B]
+
+[RIGHT][COLOR=#7FA0C2]ManyBalloons by SrIruma and SrPinkyy[/COLOR][/RIGHT][/HR][/HR]

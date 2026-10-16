@@ -1,0 +1,89 @@
+name: Bug Report
+description: Something is broken or behaving wrongly.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. The more detail you give, the faster this gets fixed. For questions, use [Discussions](https://github.com/SrIruma/manyballoons-web/discussions) instead.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you post
+      options:
+        - label: I'm running the latest ManyBalloons release
+          required: true
+        - label: I searched existing issues and this isn't a duplicate
+          required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: ManyBalloons version
+      description: The version shown on startup, or the jar file name.
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: server
+    attributes:
+      label: Server software and version
+      placeholder: Paper 1.21.1
+    validations:
+      required: true
+
+  - type: input
+    id: java
+    attributes:
+      label: Java version
+      placeholder: "21"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what_happened
+    attributes:
+      label: What happened
+      description: What went wrong. Name the balloon, command or situation involved.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Number them. The smaller the reproduction, the better.
+      placeholder: |
+        1. Equip the balloon 'solar_system' with /balloons set solar_system
+        2. Walk forward ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or stack trace
+      description: Paste anything relevant from the console. This is rendered as code, no backticks needed.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Relevant config
+      description: Paste the parts of `config.yml`, `animations.yml` or the balloon file that matter, if any.
+      render: yaml
+    validations:
+      required: false

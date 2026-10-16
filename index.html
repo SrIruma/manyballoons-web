@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManyBalloons — Overview</title>
+    <meta name="description" content="ManyBalloons — cosmetic balloons that float at your side, with real ropes, living physics, custom models and a YAML animation engine. Docs for Paper 1.21+.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+        <div class="brand">
+            <a href="#overview" class="brand-link">ManyBalloons</a>
+            <span class="brand-sub">Documentation</span>
+        </div>
+
+        <div class="search-wrap">
+            <input type="search" id="search" class="search" placeholder="Search docs…  ( / )"
+                   autocomplete="off" spellcheck="false" aria-label="Search documentation">
+        </div>
+
+        <div class="topbar-actions">
+            <a class="btn-buy" href="{{BUILTBYBIT_URL}}" target="_blank" rel="noopener">
+                <span class="buy-full">Buy on BuiltByBit</span><span class="buy-short">Buy</span>
+            </a>
+            <a class="btn-icon" href="https://github.com/SrIruma" target="_blank" rel="noopener" title="SrIruma on GitHub" aria-label="SrIruma on GitHub">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <nav class="nav" id="nav"></nav>
+            <div class="nav-empty" id="nav-empty" hidden>No matches.</div>
+        </aside>
+
+        <main class="content" id="content">
+            <!-- ========================= DOCUMENTATION ========================= -->
+            <section class="page" id="page-overview" data-group="Documentation"
+                     data-title="Overview" data-keywords="intro cosmetic balloons heads models rope physics animations categories flipbook menu shop">
+                <div class="crumbs">Documentation</div>
+                <h1>ManyBalloons</h1>
+                <p class="lead">Cosmetic balloons that float at your side — with real ropes, living motion and custom models. For Paper 1.21+.</p>
+
+                <div class="meta">
+                    <span class="pill">Paper 1.21+</span>
+                    <span class="pill">Java 21</span>
+                    <span class="pill">17 balloons</span>
+                    <span class="pill">No resource pack</span>
+                </div>
+
+                <p>ManyBalloons gives your players something to wear that actually moves. Each balloon is a small flying model tethered to the player with a real rope: it swings when you run, drifts in the wind, lifts when you swim and shudders when a mob gets close. The models are built from textured heads and item displays, so everything ships with the plugin — no resource pack to ask players to install.</p>
+
+                <p>Every balloon is defined in a single YAML file and every motion is a YAML animation, so adding your own is editing a text file, not writing code.</p>
+
+                <h2>What you get</h2>
+                <ul>
+                    <li><strong>Custom models</strong> — textured heads, item displays, or a composite model assembled from up to dozens of parts.</li>
+                    <li><strong>A real rope</strong> — an invisible leashed entity the client draws as a string, so it looks right from every angle.</li>
+                    <li><strong>17 balloons in 3 categories</strong> — Classic, Cute and Space ship by default.</li>
+                    <li><strong>Living physics</strong> — swinging, trailing and buoyancy, plus ambient wind and reactions to damage, water and nearby mobs.</li>
+                    <li><strong>A YAML animation engine</strong> — 7 channels and 6 wave shapes. The bundled Solar System is a working orrery, not a decoration.</li>
+                    <li><strong>Flipbooks</strong> — cycle a list of frames to animate a static model.</li>
+                    <li><strong>Wear several at once</strong> — <code>max_balloons</code> in config, raised per player with <code>manyballoons.slots.&lt;n&gt;</code>.</li>
+                    <li><strong>Menus out of the box</strong> — a category menu, a filtered balloon list and an admin player list.</li>
+                    <li><strong>Multilingual</strong> — English, Spanish, German, French, Italian, Dutch, Polish, Brazilian Portuguese and Russian.</li>
+                    <li><strong>Optional crafting</strong> — give any balloon a shaped or shapeless recipe.</li>
+                    <li><strong>Integrations</strong> — a free Java API with cancelable events, and PlaceholderAPI placeholders.</li>
+                </ul>
+
+                <div class="pager">
+                    <span></span>
+                    <a class="pager-next" data-goto="installation">Installation &rarr;</a>
+                </div>
+            </section>
+
+            <section class="page" id="page-installation" data-group="Documentation"
+                     data-title="Installation" data-keywords="requirements java paper setup plugins folder config lang resource pack folia">
+                <div class="crumbs">Documentation</div>
+                <h1>Installation</h1>
+
+                <h2>What you need</h2>
+                <table class="table">
+                    <tbody>
+                        <tr><th>Server</th><td>Paper 1.21 or newer (Folia is not supported)</td></tr>
+                        <tr><th>Java</th><td>21+</td></tr>
+                        <tr><th>PlaceholderAPI</th><td>Optional — only for the placeholders</td></tr>
+                        <tr><th>Resource pack</th><td>Not required — every texture is embedded</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Setup</h2>
+                <ol>
+                    <li>Drop <code>ManyBalloons.jar</code> into your <code>plugins/</code> folder.</li>
+                    <li>Start the server. It creates <code>plugins/ManyBalloons/</code> with the config, the animation file, the language files and the <code>balloons/</code> folder.</li>
+                    <li>Grant permissions — see <a data-goto="permissions">Permissions</a>. Regular players can open the menu at once; the balloons themselves are gated per node so you can sell them.</li>
+                </ol>
+
+                <div class="callout">
+                    <strong>Where things go.</strong> The plugin JAR sits in <code>plugins/</code>. Everything you edit lives in <code>plugins/ManyBalloons/</code>: <code>config.yml</code>, <code>animations.yml</code>, <code>lang/</code> and one file per balloon under <code>balloons/&lt;category&gt;/</code>.
+                </div>
+
+                <div class="callout">
+                    <strong>Reloading.</strong> After editing any YAML, run <code>/balloons reload</code> — it re-reads the config, the messages, the animations, the balloons and the recipes in place. No restart needed.
+                </div>
+
+                <div class="pager">
+                    <a class="pager-prev" data-goto="overview">&larr; Overview</a>
+                    <a class="pager-next" data-goto="commands">Commands &rarr;</a>
+                </div>
+            </section>
+
+            <section class="page" id="page-commands" data-group="Documentation"
+                     data-title="Commands" data-keywords="balloons balloon mb set clear manage reload usage">
+                <div class="crumbs">Documentation</div>
+                <h1>Commands</h1>
+                <p>Everything runs under <code>/balloons</code> (aliases <code>/balloon</code> and <code>/mb</code>).</p>
+
+                <table class="table">
+                    <thead>
+                        <tr><th>Command</th><th>What it does</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>/balloons</code></td><td>Open the category menu and pick a balloon. Needs <code>manyballoons.use</code>.</td></tr>
+                        <tr><td><code>/balloons set &lt;id&gt;</code></td><td>Equip a balloon by id. A bare <code>/balloons set</code> opens the menu instead.</td></tr>
+                        <tr><td><code>/balloons set &lt;id&gt; &lt;player&gt;</code></td><td>Give a balloon to another player. Needs <code>manyballoons.admin</code>.</td></tr>
+                        <tr><td><code>/balloons clear</code></td><td>Remove your balloons and forget your saved choice.</td></tr>
+                        <tr><td><code>/balloons clear &lt;player&gt;</code></td><td>Remove another player's balloons. Needs <code>manyballoons.admin</code>.</td></tr>
+                        <tr><td><code>/balloons manage</code></td><td>Open the admin list of online players to inspect or clear their balloons. Needs <code>manyballoons.admin</code>.</td></tr>
+                        <tr><td><code>/balloons reload</code></td><td>Reload the config, messages, animations, balloons and recipes. Needs <code>manyballoons.admin</code>.</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="callout">
+                    <strong>In the menu.</strong> Left-click a balloon to wear it, right-click one you're wearing to remove it and free the slot. The catalogue book in the menu opens a searchable list across every category.
+                </div>
+
+                <div class="pager">
+                    <a class="pager-prev" data-goto="installation">&larr; Installation</a>
+                    <a class="pager-next" data-goto="permissions">Permissions &rarr;</a>
+                </div>
+            </section>
+
+            <section class="page" id="page-permissions" data-group="Documentation"
+                     data-title="Permissions" data-keywords="permission node admin op use slots balloon public">
+                <div class="crumbs">Documentation</div>
+                <h1>Permissions</h1>
+                <p>Anyone can open the menu, but a balloon is only equippable when its own node is held — which is what lets you sell them through a rank, crate or shop plugin.</p>
+
+                <table class="table">
+                    <thead>
+                        <tr><th>Node</th><th>Default</th><th>What it allows</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>manyballoons.use</code></td><td>true</td><td>Open the menu and manage your own balloons.</td></tr>
+                        <tr><td><code>manyballoons.admin</code></td><td>op</td><td>Everything: <code>manage</code>, giving or clearing other players' balloons, <code>reload</code>, every balloon and unlimited slots.</td></tr>
+                        <tr><td><code>manyballoons.balloon.&lt;id&gt;</code></td><td>op</td><td>Permission to wear one specific balloon. The node is the <code>permission</code> field in the balloon's file.</td></tr>
+                        <tr><td><code>manyballoons.slots.&lt;n&gt;</code></td><td>false</td><td>Let the player wear up to <code>n</code> balloons at once. The highest matching <code>n</code> wins and overrides <code>max_balloons</code>.</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="callout">
+                    <strong>Free for everyone?</strong> Set <code>permission: "public"</code> in a balloon's file (also accepts <code>none</code> or <code>-</code>). That balloon needs no node at all, so anyone with <code>manyballoons.use</code> can wear it.
+                </div>
+
+                <div class="pager">
+                    <a class="pager-prev" data-goto="commands">&larr; Commands</a>
+                    <a class="pager-next" data-goto="configuration">Configuration &rarr;</a>
+                </div>
+            </section>
+
+            <section class="page" id="page-configuration" data-group="Documentation"
+                     data-title="Configuration" data-keywords="config.yml flight physics wind reactions gui max_balloons disabled_worlds sounds rope lang animations">
+                <div class="crumbs">Documentation</div>
+                <h1>Configuration</h1>
+                <p>Everything lives in <code>plugins/ManyBalloons/config.yml</code>. Edit it, then run <code>/balloons reload</code>.</p>
+
+                <table class="table">
+                    <thead>
+                        <tr><th>Key</th><th>What it does</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>lang</code></td><td>Language for all messages. Options: en, es, de, fr, it, nl, pl, pt-br, ru.</td></tr>
+                        <tr><td><code>flight.smoothing</code></td><td>How much of the gap the balloon closes each tick. Lower trails further behind.</td></tr>
+                        <tr><td><code>flight.hang</code></td><td>How many blocks below the anchor the balloon rests.</td></tr>
+                        <tr><td><code>flight.max_anchor_distance</code></td><td>Hard cap on the trailing distance. Keep it under 10, the vanilla leash limit.</td></tr>
+                        <tr><td><code>general.particle_view_distance</code></td><td>Skip particles beyond this many blocks. <code>0</code> never skips.</td></tr>
+                        <tr><td><code>general.auto_cleanup</code></td><td>Rebuild the balloon after death or a world change.</td></tr>
+                        <tr><td><code>general.protect_balloon_entities</code></td><td>Blocks damage, interaction, targeting and leashing of the balloon's entities.</td></tr>
+                        <tr><td><code>general.rope</code></td><td>Draw the string with a real leashed entity instead of particles.</td></tr>
+                        <tr><td><code>general.view_range</code></td><td>Model view-range multiplier. <code>1.0</code> is the vanilla default.</td></tr>
+                        <tr><td><code>general.max_balloons</code></td><td>How many balloons a player may wear at once.</td></tr>
+                        <tr><td><code>general.slot_spacing</code></td><td>Sideways gap between balloons worn at the same time, in blocks.</td></tr>
+                        <tr><td><code>general.disabled_worlds</code></td><td>Worlds where balloons are hidden and cannot be equipped. They reappear on exit.</td></tr>
+                        <tr><td><code>sounds.*</code></td><td>Equip, unequip and pop sounds, with volume and pitch.</td></tr>
+                        <tr><td><code>animations.update_interval_ticks</code></td><td>Update rate in ticks. <code>1</code> is smoothest, higher is cheaper.</td></tr>
+                        <tr><td><code>animations.speed_multiplier</code></td><td>Global multiplier applied to every animation.</td></tr>
+                        <tr><td><code>animations.tps_throttle</code></td><td>Stop animating below this TPS. <code>0</code> disables the throttle.</td></tr>
+                        <tr><td><code>physics.enabled</code></td><td>Turn on the swinging/trailing model. When on, <code>flight.smoothing</code> is unused.</td></tr>
+                        <tr><td><code>physics.stiffness</code></td><td>How hard it pulls back to its rest spot.</td></tr>
+                        <tr><td><code>physics.damping</code></td><td>How quickly the swing settles. Higher is calmer.</td></tr>
+                        <tr><td><code>physics.inertia</code></td><td>How much your movement drags the balloon.</td></tr>
+                        <tr><td><code>physics.buoyancy</code></td><td>A gentle upward push so it floats above its rest spot.</td></tr>
+                        <tr><td><code>physics.max_speed</code></td><td>Speed cap in blocks/tick, so it never overtakes the leash.</td></tr>
+                        <tr><td><code>wind.*</code></td><td>Ambient wind strength, with separate multipliers for rain and thunder.</td></tr>
+                        <tr><td><code>reactions.*</code></td><td>Shove on damage, lift while swimming and a tremble near hostile mobs.</td></tr>
+                        <tr><td><code>gui.rows</code></td><td>Row count (3&ndash;6) of the balloon list and catalogue.</td></tr>
+                        <tr><td><code>gui.category-rows</code></td><td>Row count (3&ndash;6) of the category menu.</td></tr>
+                        <tr><td><code>categories.*</code></td><td>Style each category icon: <code>display_name</code>, <code>material</code>, <code>skull_texture</code>, <code>custom_model_data</code> and <code>lore</code>. The key <code>all</code> styles the "All" entry.</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="pager">
+                    <a class="pager-prev" data-goto="permissions">&larr; Permissions</a>
+                    <a class="pager-next" data-goto="balloons">Creating balloons &rarr;</a>
+                </div>
+            </section>
+
+            <section class="page" id="page-balloons" data-group="Documentation"
+                     data-title="Creating balloons" data-keywords="balloon yml file category parts composite flipbook frames skull_texture custom_model_data offset trail aura recipe crafting trail">
+                <div class="crumbs">Documentation</div>
+                <h1>Creating balloons</h1>
+                <p>One file per balloon under <code>plugins/ManyBalloons/balloons/&lt;category&gt;/&lt;id&gt;.yml</code>. The file name is the id and the sub-folder is the category, so <code>balloons/cute/heart.yml</code> is the balloon <code>heart</code> in the category <code>cute</code>. A new sub-folder becomes a new category automatically. Rename a file to start with <code>_</code>, or set <code>disabled: true</code>, to park it.</p>
+
+                <p class="muted">The category menu is styled in <code>config.yml</code> under <code>categories</code>, so a category added here is styled by adding a matching key there.</p>
+
+                <h2>A minimal balloon</h2>
+                <pre><code>display_name: "&amp;cClassic Red"
+material: PLAYER_HEAD
+skull_texture: "&lt;base64 profile texture&gt;"
+lore:
+  - "&amp;7A classic red balloon"
+  - "&amp;8Left-click to equip, right-click to remove"
+animation: "float"
+permission: "manyballoons.balloon.classic_red"
+size: 1.0
+offset:
+  x: 0.7
+  y: 1.8
+  z: -0.4</code></pre>
+
+                <h2>Top-level keys</h2>
+                <table class="table">
+                    <thead>
+                        <tr><th>Key</th><th>What it does</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>display_name</code></td><td>Name shown on the item, in the menus and in messages. Colour codes with <code>&amp;</code>.</td></tr>
+                        <tr><td><code>material</code></td><td>The item whose model is rendered.</td></tr>
+                        <tr><td><code>skull_texture</code></td><td>Base64 profile texture, for <code>PLAYER_HEAD</code> models. Omit for a plain item.</td></tr>
+                        <tr><td><code>custom_model_data</code></td><td>Item model id, when a resource pack adds one.</td></tr>
+                        <tr><td><code>lore</code></td><td>Tooltip lines shown with the menu item.</td></tr>
+                        <tr><td><code>animation</code></td><td>Motion name. A built-in like <code>float</code>, or any name defined in <code>animations.yml</code>.</td></tr>
+                        <tr><td><code>permission</code></td><td>Node required to equip it. <code>public</code>, <code>none</code> or <code>-</code> mean everyone.</td></tr>
+                        <tr><td><code>size</code></td><td>Scale of the main model. <code>1.0</code> is its natural size; parts keep their own scale.</td></tr>
+                        <tr><td><code>offset</code></td><td>Rest position of the balloon relative to the player: <code>x</code> (side), <code>y</code> (above the eyes, defaults to 1.6) and <code>z</code> (forward/back). Also accepted flat as <code>offset_x/y/z</code>.</td></tr>
+                        <tr><td><code>trail</code></td><td>Particle trail behind the main model: <code>enabled</code>, <code>type</code>, <code>color</code>, <code>amount</code>, <code>scale</code>, <code>interval</code>.</td></tr>
+                        <tr><td><code>aura</code></td><td>Particles hugging the balloon: <code>enabled</code>, <code>type</code>, <code>amount</code>.</td></tr>
+                        <tr><td><code>parts</code></td><td>Extra displays of a composite model (see below).</td></tr>
+                        <tr><td><code>frames</code></td><td>Flipbook frames cycled on the main model (see below).</td></tr>
+                        <tr><td><code>recipe</code></td><td>Optional crafting recipe (see below).</td></tr>
+                        <tr><td><code>disabled</code></td><td><code>true</code> unloads the balloon without deleting the file.</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Composite models</h2>
+                <p>A balloon can be several displays at once. Each entry in <code>parts</code> is its own model with its own offset, scale, animation, trail and aura, which is what the Solar System and the UP! house are built from.</p>
+                <table class="table">
+                    <thead>
+                        <tr><th>Part key</th><th>What it does</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>material</code>, <code>skull_texture</code>, <code>custom_model_data</code></td><td>The part's model, exactly like the top level.</td></tr>
+                        <tr><td><code>offset_x</code>, <code>offset_y</code>, <code>offset_z</code></td><td>Position of the part relative to the balloon's rest spot, in blocks.</td></tr>
+                        <tr><td><code>scale</code></td><td>Absolute scale of this part.</td></tr>
+                        <tr><td><code>rope</code></td><td><code>true</code> hangs the part from the main rope anchor on its own string — used by the UP! house balloons.</td></tr>
+                        <tr><td><code>animation</code></td><td>Motion for this part. <code>NONE</code> keeps it still. The reserved name <code>orbit</code> circles it around the balloon centre from its own offset.</td></tr>
+                        <tr><td><code>trail</code>, <code>aura</code></td><td>Per-part particles, with the same fields as the top level.</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Flipbook frames</h2>
+                <p>To animate a static model, list frames and the interval between them. Each frame is a model swap on the main display.</p>
+                <pre><code>frames:
+  interval: 4
+  list:
+    - { material: PLAYER_HEAD, skull_texture: "&lt;frame 1&gt;" }
+    - { material: PLAYER_HEAD, skull_texture: "&lt;frame 2&gt;" }</code></pre>
+
+                <h2>Crafting recipes</h2>
+                <p>Add a <code>recipe</code> section to make the balloon craftable. With a <code>shape</code> it is a shaped recipe using the characters from <code>ingredients</code>; without one it is shapeless. The crafted item carries the balloon's id, so using it equips that balloon.</p>
+                <pre><code>recipe:
+  enabled: true
+  shape:
+    - "SBS"
+    - "SLS"
+    - "SBS"
+  ingredients:
+    S: STRING
+    B: BONE_MEAL
+    L: LIGHT_BLUE_DYE</code></pre>
+
+                <div class="callout">
+                    <strong>Parts are relative.</strong> Every offset is measured from the balloon's own rest spot, so moving <code>offset</code> at the top level moves the whole model and all of its parts together.
+                </div>
+
+                <div class="pager">
+                    <a class="pager-prev" data-goto="configuration">&larr; Configuration</a>
+                    <a class="pager-next" data-goto="animations">Animations &rarr;</a>
+                </div>
+            </section>
+
+            <section class="page" id="page-animations" data-group="Documentation"
+                     data-title="Animations" data-keywords="animations.yml channels translation rotation scale waves sine cosine triangle sawtooth square linear built-in orbit periodic speed">
+                <div class="crumbs">Documentation</div>
+                <h1>Animations</h1>
+                <p>Custom motions live in <code>plugins/ManyBalloons/animations.yml</code>. Define one there, then point a balloon or a part at it with <code>animation: "my_name"</code>. No code, no rebuild.</p>
+
+                <h2>Channels</h2>
+                <p>Each channel holds one wave, a list of waves that add up, or a plain number for a constant.</p>
+                <table class="table">
+                    <thead>
+                        <tr><th>Channel</th><th>What it moves</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>translation.x / y / z</code></td><td>Position in blocks.</td></tr>
+                        <tr><td><code>rotation.x / y / z</code></td><td>Rotation in degrees: <code>x</code> is pitch, <code>y</code> is yaw, <code>z</code> is roll.</td></tr>
+                        <tr><td><code>scale</code></td><td>Size multiplier, where <code>1.0</code> is unchanged.</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>A defined motion</h2>
+                <pre><code>bob_and_drift:
+  translation:
+    y: { wave: sine, amplitude: 0.15, frequency: 0.12 }
+    x:
+      - { wave: sine,   amplitude: 0.20, frequency: 0.10 }
+      - { wave: cosine, amplitude: 0.10, frequency: 0.23, phase: 1.57 }
+    z: 0.5
+  rotation:
+    y: { wave: linear, amplitude: 1.0, frequency: 0.05 }</code></pre>
+
+                <h2>Wave fields</h2>
+                <table class="table">
+                    <thead>
+                        <tr><th>Field</th><th>What it does</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>wave</code></td><td><code>sine</code> (default), <code>cosine</code>, <code>triangle</code>, <code>sawtooth</code>, <code>square</code> or <code>linear</code>.</td></tr>
+                        <tr><td><code>amplitude</code></td><td>Strength of the wave. Default <code>1.0</code>.</td></tr>
+                        <tr><td><code>frequency</code></td><td>Radians per tick. The period is <code>2&pi; / frequency</code>. Default <code>1.0</code>.</td></tr>
+                        <tr><td><code>phase</code></td><td>Starting angle in radians. Default <code>0.0</code>.</td></tr>
+                        <tr><td><code>offset</code></td><td>A constant added to the wave. Default <code>0.0</code>.</td></tr>
+                    </tbody>
+                </table>
+
+                <p class="muted"><code>linear</code> grows forever — <code>amplitude &times; (frequency &times; t + phase)</code> — so it is the one to use on <code>rotation.y</code> for a continuous spin. A circle is a <code>cosine</code> on <code>x</code> paired with a <code>sine</code> on <code>z</code> at the same frequency, where the amplitude is the radius in blocks.</p>
+
+                <h2>Scaling around a centre</h2>
+                <p><code>scale</code> can also be given as <code>base</code> plus <code>waves</code>, to move the centre it breathes around.</p>
+                <pre><code>scale:
+  base: 1.0
+  waves:
+    - { wave: sine, amplitude: 0.08, frequency: 0.18 }</code></pre>
+
+                <h2>Built-in motions</h2>
+                <p>These ship with the plugin and win over a custom name with the same key, so the defaults can't be broken. Point any balloon at one by name.</p>
+                <p><code>float</code> &middot; <code>float_spin</code> &middot; <code>float_spin_slow</code> &middot; <code>orbit</code> &middot; <code>pulse_float</code> &middot; <code>none</code> &middot; <code>wobble</code> &middot; <code>rock</code> &middot; <code>sway</code> &middot; <code>heartbeat</code> &middot; <code>helix</code> &middot; <code>zigzag</code> &middot; <code>drift</code> &middot; <code>spin</code> &middot; <code>bounce</code> &middot; <code>swing</code></p>
+
+                <div class="callout">
+                    <strong><code>orbit</code> is special.</strong> A part using it circles the balloon centre from its own offset: the radius is <code>hypot(x, z)</code> and the start angle is <code>atan2(z, x)</code>. The bundled Solar System instead gives every planet its own custom circle, so they orbit at different speeds.
+                </div>
+
+                <p class="muted"><code>animations.speed_multiplier</code> in <code>config.yml</code> scales every wave at once. Run <code>/balloons reload</code> after editing this file.</p>
+
+                <div class="pager">
+                    <a class="pager-prev" data-goto="balloons">&larr; Creating balloons</a>
+                    <a class="pager-next" data-goto="placeholders">Placeholders &rarr;</a>
+                </div>
+            </section>
+
+            <section class="page" id="page-placeholders" data-group="Documentation"
+                     data-title="Placeholders" data-keywords="placeholderapi placeholders balloon equipped count list has papi">
+                <div class="crumbs">Documentation</div>
+                <h1>Placeholders</h1>
+                <p>With PlaceholderAPI installed, these resolve for the player being looked at.</p>
+
+                <table class="table">
+                    <thead>
+                        <tr><th>Placeholder</th><th>What it gives</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>%manyballoons_balloon%</code></td><td>Display name of the player's first equipped balloon.</td></tr>
+                        <tr><td><code>%manyballoons_balloon_id%</code></td><td>Id of that balloon. Alias: <code>%manyballoons_equipped_id%</code>.</td></tr>
+                        <tr><td><code>%manyballoons_equipped%</code></td><td><code>true</code> or <code>false</code> — whether anything is equipped.</td></tr>
+                        <tr><td><code>%manyballoons_equipped_count%</code></td><td>How many balloons the player is wearing.</td></tr>
+                        <tr><td><code>%manyballoons_equipped_list%</code></td><td>Every equipped id, comma-separated. Alias: <code>%manyballoons_balloons%</code>.</td></tr>
+                        <tr><td><code>%manyballoons_count%</code></td><td>Number of balloons loaded on the server.</td></tr>
+                        <tr><td><code>%manyballoons_has_&lt;id&gt;%</code></td><td><code>true</code> or <code>false</code> — whether the player may use that balloon. Unknown ids resolve to nothing.</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="pager">
+                    <a class="pager-prev" data-goto="animations">&larr; Animations</a>
+                    <a class="pager-next" data-goto="api-overview">API &rarr;</a>
+                </div>
+            </section>
+
+            <!-- ============================== API ============================== -->
+            <section class="page" id="page-api-overview" data-group="API"
+                     data-title="Getting started" data-keywords="api balloonapi get java gradle maven dependency plugin event integration">
+                <div class="crumbs">API</div>
+                <h1>Getting started</h1>
+                <p class="lead">Hook another plugin into ManyBalloons — shops, quests, crates and menus. The API is free to use.</p>
+
+                <p>Obtain the shared instance with <code>BalloonAPI.get()</code> and you can read and change what a player is wearing without touching the plugin's internals. Add ManyBalloons as a dependency in your <code>plugin.yml</code>, then look the API up at runtime.</p>
+
+                <h2>plugin.yml</h2>
+                <pre><code>depend: [ManyBalloons]
+# or, if ManyBalloons is optional:
+softdepend: [ManyBalloons]</code></pre>
+
+                <h2>Use it</h2>
+                <pre><code>BalloonAPI api = BalloonAPI.get();
+if (api == null) {
+    getLogger().warning("ManyBalloons is not installed.");
+    return;
+}
+
+// Give a player a balloon (fires BalloonEquipEvent, respects slots and worlds)
+if (api.equip(player, "classic_red")) {
+    getLogger().info("Equipped classic_red for " + player.getName());
+}
+
+// Read what they wear
+boolean has = api.hasBalloon(player.getUniqueId());
+int free = api.remainingSlots(player);</code></pre>
+
+                <div class="pager">
+                    <span></span>
+                    <a class="pager-next" data-goto="api-reference">API reference &rarr;</a>
+                </div>
+            </section>
+
+            <section class="page" id="page-api-reference" data-group="API"
+                     data-title="API reference" data-keywords="balloonapi methods hasballoon canuse equip remaining slots unequip equipped ids cosmetics events equipevent unequipevent cancellable">
+                <div class="crumbs">API</div>
+                <h1>API reference</h1>
+
+                <h2><code>BalloonAPI</code></h2>
+                <table class="table">
+                    <thead>
+                        <tr><th>Method</th><th>Returns</th><th>What it does</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>get()</code></td><td><code>BalloonAPI</code></td><td>The shared instance, or <code>null</code> before the plugin enabled.</td></tr>
+                        <tr><td><code>hasBalloon(UUID)</code></td><td><code>boolean</code></td><td>Whether the player wears at least one balloon.</td></tr>
+                        <tr><td><code>canUse(Player, String)</code></td><td><code>boolean</code></td><td>Whether the player may equip that balloon, permission included. Unknown ids are never allowed.</td></tr>
+                        <tr><td><code>equip(Player, String)</code></td><td><code>boolean</code></td><td>Adds the balloon when a slot is free, the world allows it and no listener cancels. Returns whether it was added.</td></tr>
+                        <tr><td><code>remainingSlots(Player)</code></td><td><code>int</code></td><td>Free equip slots, or <code>Integer.MAX_VALUE</code> for admins.</td></tr>
+                        <tr><td><code>unequip(UUID)</code></td><td><code>void</code></td><td>Removes every balloon and clears the saved choice.</td></tr>
+                        <tr><td><code>getEquippedCosmeticIds(UUID)</code></td><td><code>List&lt;String&gt;</code></td><td>Every equipped id, in equip order.</td></tr>
+                        <tr><td><code>getEquippedCosmeticId(UUID)</code></td><td><code>String</code></td><td>The first equipped id, or <code>null</code>.</td></tr>
+                        <tr><td><code>getCosmetics()</code></td><td><code>Collection&lt;Cosmetic&gt;</code></td><td>Every balloon loaded from <code>balloons/</code>.</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Events</h2>
+                <table class="table">
+                    <thead>
+                        <tr><th>Event</th><th>What it's for</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>BalloonEquipEvent</code></td><td>Fired before a player is given a balloon. <strong>Cancellable</strong> — cancel it and the API reports the equip as failed. Gives the <code>Player</code> and the <code>Cosmetic</code>.</td></tr>
+                        <tr><td><code>BalloonUnequipEvent</code></td><td>Fired when balloons are removed. Gives the player's <code>UUID</code>; the <code>Cosmetic</code> is available while it's still tracked.</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>Listening</h2>
+                <pre><code>@EventHandler
+public void onEquip(BalloonEquipEvent event) {
+    // Lock one balloon behind a quest, for example
+    if (event.getCosmetic().id().equals("galaxy")
+            &amp;&amp; !playerHasQuest(event.getPlayer())) {
+        event.setCancelled(true);
+    }
+}</code></pre>
+
+                <p class="muted"><code>Cosmetic</code> is an immutable record. Useful accessors: <code>id()</code>, <code>displayName()</code>, <code>material()</code>, <code>category()</code>, <code>permission()</code>, <code>isPublic()</code>.</p>
+
+                <div class="pager">
+                    <a class="pager-prev" data-goto="api-overview">&larr; Getting started</a>
+                    <span></span>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <span>ManyBalloons © 2024 SrIruma &amp; SrPinkyy</span>
+        <span class="footer-sep">·</span>
+        <a href="https://github.com/SrIruma" target="_blank" rel="noopener">GitHub</a>
+        <span class="footer-sep">·</span>
+        <a href="{{BUILTBYBIT_URL}}" target="_blank" rel="noopener">Buy on BuiltByBit</a>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
