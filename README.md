@@ -35,9 +35,9 @@ behaves on Pages.
 
 ## Buy link
 
-The "Buy on BuiltByBit" buttons in `index.html` use the placeholder
-`{{BUILTBYBIT_URL}}`. Once the resource is published, replace both occurrences
-with the real URL.
+The "Buy on BuiltByBit" buttons in `index.html` link to
+<https://builtbybit.com/resources/manyballoons.132411/>. Update both
+occurrences if the listing URL ever changes.
 
 ## BuiltByBit bio
 
