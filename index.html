@@ -412,20 +412,41 @@ offset:
 
             <!-- ============================== API ============================== -->
             <section class="page" id="page-api-overview" data-group="API"
-                     data-title="Getting started" data-keywords="api balloonapi get java gradle maven dependency plugin event integration">
+                     data-title="Getting started" data-keywords="api balloonapi java gradle maven dependency provided servicesmanager services getballoons event integration">
                 <div class="crumbs">API</div>
                 <h1>Getting started</h1>
                 <p class="lead">Hook another plugin into ManyBalloons — shops, quests, crates and menus. The API is free to use.</p>
 
-                <p>Obtain the shared instance with <code>BalloonAPI.get()</code> and you can read and change what a player is wearing without touching the plugin's internals. Add ManyBalloons as a dependency in your <code>plugin.yml</code>, then look the API up at runtime.</p>
+                <p>The API is a small, self-contained jar you compile against. At runtime you obtain it from the Bukkit <code>ServicesManager</code>, so you can also ask whether ManyBalloons is installed instead of crashing with a <code>ClassNotFoundException</code>. Nothing from the plugin's internals is exposed.</p>
 
-                <h2>plugin.yml</h2>
+                <h2>Add the dependency</h2>
+                <p>Compile against <code>manyballoons-api</code> with <code>provided</code> scope, so it is never bundled into your own jar. It isn't on Maven Central; download it from the <a data-goto="api-downloads">API downloads</a> page.</p>
+                <p><strong>Maven</strong> — once the jar is in a repository you can resolve:</p>
+                <pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;dev.mugi&lt;/groupId&gt;
+  &lt;artifactId&gt;manyballoons-api&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0&lt;/version&gt;
+  &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+                <p>If it isn't published to a repository you use, install the downloaded jar into your local one:</p>
+                <pre><code>mvn install:install-file -Dfile=manyballoons-api.jar \
+  -DgroupId=dev.mugi -DartifactId=manyballoons-api \
+  -Dversion=1.0.0 -Dpackaging=jar</code></pre>
+                <p><strong>Gradle</strong> — drop the jar in <code>libs/</code> and point at it directly:</p>
+                <pre><code>dependencies {
+    compileOnly files("libs/manyballoons-api.jar")
+    // or, once it is in a repository:
+    // compileOnly "dev.mugi:manyballoons-api:1.0.0"
+}</code></pre>
+
+                <h2>Declare it in plugin.yml</h2>
+                <p>The server needs to know your plugin uses ManyBalloons so it can load the classes at runtime.</p>
                 <pre><code>depend: [ManyBalloons]
 # or, if ManyBalloons is optional:
 softdepend: [ManyBalloons]</code></pre>
 
                 <h2>Use it</h2>
-                <pre><code>BalloonAPI api = BalloonAPI.get();
+                <pre><code>BalloonAPI api = Bukkit.getServicesManager().load(BalloonAPI.class);
 if (api == null) {
     getLogger().warning("ManyBalloons is not installed.");
     return;
@@ -447,25 +468,46 @@ int free = api.remainingSlots(player);</code></pre>
             </section>
 
             <section class="page" id="page-api-reference" data-group="API"
-                     data-title="API reference" data-keywords="balloonapi methods hasballoon canuse equip remaining slots unequip equipped ids cosmetics events equipevent unequipevent cancellable">
+                     data-title="API reference" data-keywords="balloonapi methods hasballoon canuse equip remaining slots unequip equipped ids balloons getballoon balloon record id displayname material category permission ispublic animation events equipevent unequipevent cancellable">
                 <div class="crumbs">API</div>
                 <h1>API reference</h1>
 
                 <h2><code>BalloonAPI</code></h2>
+                <p>The interface you get from <code>Bukkit.getServicesManager().load(BalloonAPI.class)</code>. Every method must be called from the main thread.</p>
                 <table class="table">
                     <thead>
                         <tr><th>Method</th><th>Returns</th><th>What it does</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td><code>get()</code></td><td><code>BalloonAPI</code></td><td>The shared instance, or <code>null</code> before the plugin enabled.</td></tr>
                         <tr><td><code>hasBalloon(UUID)</code></td><td><code>boolean</code></td><td>Whether the player wears at least one balloon.</td></tr>
                         <tr><td><code>canUse(Player, String)</code></td><td><code>boolean</code></td><td>Whether the player may equip that balloon, permission included. Unknown ids are never allowed.</td></tr>
                         <tr><td><code>equip(Player, String)</code></td><td><code>boolean</code></td><td>Adds the balloon when a slot is free, the world allows it and no listener cancels. Returns whether it was added.</td></tr>
                         <tr><td><code>remainingSlots(Player)</code></td><td><code>int</code></td><td>Free equip slots, or <code>Integer.MAX_VALUE</code> for admins.</td></tr>
                         <tr><td><code>unequip(UUID)</code></td><td><code>void</code></td><td>Removes every balloon and clears the saved choice.</td></tr>
-                        <tr><td><code>getEquippedCosmeticIds(UUID)</code></td><td><code>List&lt;String&gt;</code></td><td>Every equipped id, in equip order.</td></tr>
-                        <tr><td><code>getEquippedCosmeticId(UUID)</code></td><td><code>String</code></td><td>The first equipped id, or <code>null</code>.</td></tr>
-                        <tr><td><code>getCosmetics()</code></td><td><code>Collection&lt;Cosmetic&gt;</code></td><td>Every balloon loaded from <code>balloons/</code>.</td></tr>
+                        <tr><td><code>getEquippedBalloonIds(UUID)</code></td><td><code>List&lt;String&gt;</code></td><td>Every equipped id, in equip order.</td></tr>
+                        <tr><td><code>getEquippedBalloonId(UUID)</code></td><td><code>String</code></td><td>The first equipped id, or <code>null</code>.</td></tr>
+                        <tr><td><code>getBalloons()</code></td><td><code>Collection&lt;Balloon&gt;</code></td><td>Every balloon loaded from <code>balloons/</code>.</td></tr>
+                        <tr><td><code>getBalloon(String)</code></td><td><code>Balloon</code></td><td>One balloon by id, or <code>null</code> when no such balloon is loaded.</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>The <code>Balloon</code> record</h2>
+                <p>An immutable, read-only view of a loaded balloon. It holds only definition data, never per-player state.</p>
+                <table class="table">
+                    <thead>
+                        <tr><th>Accessor</th><th>Type</th><th>What it is</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>id()</code></td><td><code>String</code></td><td>The balloon id, e.g. <code>classic_red</code>.</td></tr>
+                        <tr><td><code>displayName()</code></td><td><code>String</code></td><td>The name shown on the item and in the menus.</td></tr>
+                        <tr><td><code>material()</code></td><td><code>Material</code></td><td>The item whose model is rendered.</td></tr>
+                        <tr><td><code>skullTexture()</code></td><td><code>String</code></td><td>Base64 head texture, or <code>null</code> for none.</td></tr>
+                        <tr><td><code>customModelData()</code></td><td><code>int</code></td><td>The item's <code>custom_model_data</code>, <code>0</code> when unset.</td></tr>
+                        <tr><td><code>lore()</code></td><td><code>List&lt;String&gt;</code></td><td>Tooltip lines shown with the menu item.</td></tr>
+                        <tr><td><code>animation()</code></td><td><code>String</code></td><td>Name of the motion applied while it's out.</td></tr>
+                        <tr><td><code>category()</code></td><td><code>String</code></td><td>Sub-folder it came from, or <code>"default"</code>.</td></tr>
+                        <tr><td><code>permission()</code></td><td><code>String</code></td><td>Node required to equip it, or <code>null</code> when everyone may.</td></tr>
+                        <tr><td><code>isPublic()</code></td><td><code>boolean</code></td><td>Whether no permission is required to use it.</td></tr>
                     </tbody>
                 </table>
 
@@ -475,8 +517,8 @@ int free = api.remainingSlots(player);</code></pre>
                         <tr><th>Event</th><th>What it's for</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td><code>BalloonEquipEvent</code></td><td>Fired before a player is given a balloon. <strong>Cancellable</strong> — cancel it and the API reports the equip as failed. Gives the <code>Player</code> and the <code>Cosmetic</code>.</td></tr>
-                        <tr><td><code>BalloonUnequipEvent</code></td><td>Fired when balloons are removed. Gives the player's <code>UUID</code>; the <code>Cosmetic</code> is available while it's still tracked.</td></tr>
+                        <tr><td><code>BalloonEquipEvent</code></td><td>Fired before a player is given a balloon. <strong>Cancellable</strong> — cancel it and the equip is rejected. <code>getPlayer()</code>, <code>getBalloon()</code>.</td></tr>
+                        <tr><td><code>BalloonUnequipEvent</code></td><td>Fired when a balloon is removed. Notification only. <code>getPlayerId()</code> is always set; <code>getPlayer()</code> and <code>getBalloon()</code> may be <code>null</code> (quit, admin clear).</td></tr>
                     </tbody>
                 </table>
 
@@ -484,16 +526,50 @@ int free = api.remainingSlots(player);</code></pre>
                 <pre><code>@EventHandler
 public void onEquip(BalloonEquipEvent event) {
     // Lock one balloon behind a quest, for example
-    if (event.getCosmetic().id().equals("galaxy")
+    if (event.getBalloon().id().equals("galaxy")
             &amp;&amp; !playerHasQuest(event.getPlayer())) {
         event.setCancelled(true);
     }
 }</code></pre>
 
-                <p class="muted"><code>Cosmetic</code> is an immutable record. Useful accessors: <code>id()</code>, <code>displayName()</code>, <code>material()</code>, <code>category()</code>, <code>permission()</code>, <code>isPublic()</code>.</p>
-
                 <div class="pager">
                     <a class="pager-prev" data-goto="api-overview">&larr; Getting started</a>
+                    <a class="pager-next" data-goto="api-downloads">API downloads &rarr;</a>
+                </div>
+            </section>
+
+            <section class="page" id="page-api-downloads" data-group="API"
+                     data-title="API downloads" data-keywords="download jar sources javadoc artifact manyballoons-api free">
+                <div class="crumbs">API</div>
+                <h1>API downloads</h1>
+                <p class="lead">The API is free to use from any plugin.</p>
+
+                <table class="table">
+                    <thead>
+                        <tr><th>File</th><th>What it's for</th><th>Download</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>manyballoons-api.jar</code></td>
+                            <td>Compiled API to build against (<code>provided</code>).</td>
+                            <td><a class="btn" href="api/manyballoons-api.jar" download>Download</a></td>
+                        </tr>
+                        <tr>
+                            <td><code>manyballoons-api-sources.jar</code></td>
+                            <td>The API sources, if you want to read them.</td>
+                            <td><a class="btn" href="api/manyballoons-api-sources.jar" download>Download</a></td>
+                        </tr>
+                        <tr>
+                            <td><code>manyballoons-api-javadoc.jar</code></td>
+                            <td>Generated Javadoc.</td>
+                            <td><a class="btn" href="api/manyballoons-api-javadoc.jar" download>Download</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="muted">Build against it with <code>provided</code> scope and never bundle it into your own jar.</p>
+
+                <div class="pager">
+                    <a class="pager-prev" data-goto="api-reference">&larr; API reference</a>
                     <span></span>
                 </div>
             </section>

@@ -13,7 +13,15 @@ box in the top bar (press `/` to jump to it):
 - **Documentation** — overview, installation, commands, permissions,
   configuration, creating balloons, the animation engine and the placeholder
   tokens.
-- **API** — how to use `BalloonAPI`, the method reference and the events.
+- **API** — how to use the API, the method reference, the events and the
+  downloads.
+
+## API jars
+
+`api/` holds the compiled integration API the docs link to
+(`manyballoons-api.jar`, `manyballoons-api-sources.jar` and
+`manyballoons-api-javadoc.jar`). Rebuild them from the plugin repo with
+`mvn clean package` and copy the three jars from `api/target/` back here.
 
 ## Local preview
 
