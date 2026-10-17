@@ -439,18 +439,18 @@ custom_item: "nexo:my_balloon"</code></pre>
                 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;dev.mugi&lt;/groupId&gt;
   &lt;artifactId&gt;manyballoons-api&lt;/artifactId&gt;
-  &lt;version&gt;1.1.0&lt;/version&gt;
+  &lt;version&gt;1.0.0&lt;/version&gt;
   &lt;scope&gt;provided&lt;/scope&gt;
 &lt;/dependency&gt;</code></pre>
                 <p>If it isn't published to a repository you use, install the downloaded jar into your local one:</p>
                 <pre><code>mvn install:install-file -Dfile=manyballoons-api.jar \
   -DgroupId=dev.mugi -DartifactId=manyballoons-api \
-  -Dversion=1.1.0 -Dpackaging=jar</code></pre>
+  -Dversion=1.0.0 -Dpackaging=jar</code></pre>
                 <p><strong>Gradle</strong> — drop the jar in <code>libs/</code> and point at it directly:</p>
                 <pre><code>dependencies {
     compileOnly files("libs/manyballoons-api.jar")
     // or, once it is in a repository:
-    // compileOnly "dev.mugi:manyballoons-api:1.1.0"
+    // compileOnly "dev.mugi:manyballoons-api:1.0.0"
 }</code></pre>
 
                 <h2>Declare it in plugin.yml</h2>
