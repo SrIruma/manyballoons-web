@@ -60,6 +60,7 @@
                 <h2>What you get</h2>
                 <ul>
                     <li><strong>Custom models</strong> — textured heads, item displays, or a composite model assembled from up to dozens of parts.</li>
+                    <li><strong>Items from your item plugin</strong> — render an ItemsAdder, Oraxen or Nexo item as a balloon, a part, a flipbook frame or a category icon.</li>
                     <li><strong>A real rope</strong> — an invisible leashed entity the client draws as a string, so it looks right from every angle.</li>
                     <li><strong>17 balloons in 3 categories</strong> — Classic, Cute and Space ship by default.</li>
                     <li><strong>Living physics</strong> — swinging, trailing and buoyancy, plus ambient wind and reactions to damage, water and nearby mobs.</li>
@@ -89,6 +90,7 @@
                         <tr><th>Server</th><td>Paper 1.21 or newer (Folia is not supported)</td></tr>
                         <tr><th>Java</th><td>21+</td></tr>
                         <tr><th>PlaceholderAPI</th><td>Optional — only for the placeholders</td></tr>
+                        <tr><th>ItemsAdder / Oraxen / Nexo</th><td>Optional — only to render their items as balloons</td></tr>
                         <tr><th>Resource pack</th><td>Not required — every texture is embedded</td></tr>
                     </tbody>
                 </table>
@@ -210,7 +212,7 @@
                         <tr><td><code>reactions.*</code></td><td>Shove on damage, lift while swimming and a tremble near hostile mobs.</td></tr>
                         <tr><td><code>gui.rows</code></td><td>Row count (3&ndash;6) of the balloon list and catalogue.</td></tr>
                         <tr><td><code>gui.category-rows</code></td><td>Row count (3&ndash;6) of the category menu.</td></tr>
-                        <tr><td><code>categories.*</code></td><td>Style each category icon: <code>display_name</code>, <code>material</code>, <code>skull_texture</code>, <code>custom_model_data</code> and <code>lore</code>. The key <code>all</code> styles the "All" entry.</td></tr>
+                        <tr><td><code>categories.*</code></td><td>Style each category icon: <code>display_name</code>, <code>material</code>, <code>skull_texture</code>, <code>custom_model_data</code>, <code>custom_item</code> and <code>lore</code>. The key <code>all</code> styles the "All" entry.</td></tr>
                     </tbody>
                 </table>
 
@@ -221,7 +223,7 @@
             </section>
 
             <section class="page" id="page-balloons" data-group="Documentation"
-                     data-title="Creating balloons" data-keywords="balloon yml file category parts composite flipbook frames skull_texture custom_model_data offset trail aura recipe crafting trail">
+                     data-title="Creating balloons" data-keywords="balloon yml file category parts composite flipbook frames skull_texture custom_model_data custom_item itemsadder oraxen nexo offset trail aura recipe crafting trail">
                 <div class="crumbs">Documentation</div>
                 <h1>Creating balloons</h1>
                 <p>One file per balloon under <code>plugins/ManyBalloons/balloons/&lt;category&gt;/&lt;id&gt;.yml</code>. The file name is the id and the sub-folder is the category, so <code>balloons/cute/heart.yml</code> is the balloon <code>heart</code> in the category <code>cute</code>. A new sub-folder becomes a new category automatically. Rename a file to start with <code>_</code>, or set <code>disabled: true</code>, to park it.</p>
@@ -253,6 +255,7 @@ offset:
                         <tr><td><code>material</code></td><td>The item whose model is rendered.</td></tr>
                         <tr><td><code>skull_texture</code></td><td>Base64 profile texture, for <code>PLAYER_HEAD</code> models. Omit for a plain item.</td></tr>
                         <tr><td><code>custom_model_data</code></td><td>Item model id, when a resource pack adds one.</td></tr>
+                        <tr><td><code>custom_item</code></td><td>Render an ItemsAdder, Oraxen or Nexo item instead of a material (see below).</td></tr>
                         <tr><td><code>lore</code></td><td>Tooltip lines shown with the menu item.</td></tr>
                         <tr><td><code>animation</code></td><td>Motion name. A built-in like <code>float</code>, or any name defined in <code>animations.yml</code>.</td></tr>
                         <tr><td><code>permission</code></td><td>Node required to equip it. <code>public</code>, <code>none</code> or <code>-</code> mean everyone.</td></tr>
@@ -274,7 +277,7 @@ offset:
                         <tr><th>Part key</th><th>What it does</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td><code>material</code>, <code>skull_texture</code>, <code>custom_model_data</code></td><td>The part's model, exactly like the top level.</td></tr>
+                        <tr><td><code>material</code>, <code>skull_texture</code>, <code>custom_model_data</code>, <code>custom_item</code></td><td>The part's model, exactly like the top level.</td></tr>
                         <tr><td><code>offset_x</code>, <code>offset_y</code>, <code>offset_z</code></td><td>Position of the part relative to the balloon's rest spot, in blocks.</td></tr>
                         <tr><td><code>scale</code></td><td>Absolute scale of this part.</td></tr>
                         <tr><td><code>rope</code></td><td><code>true</code> hangs the part from the main rope anchor on its own string — used by the UP! house balloons.</td></tr>
@@ -290,6 +293,17 @@ offset:
   list:
     - { material: PLAYER_HEAD, skull_texture: "&lt;frame 1&gt;" }
     - { material: PLAYER_HEAD, skull_texture: "&lt;frame 2&gt;" }</code></pre>
+
+                <h2>Items from other plugins</h2>
+                <p>Instead of a <code>material</code>, any balloon, part, flipbook frame or category icon can render an item defined by <strong>ItemsAdder</strong>, <strong>Oraxen</strong> or <strong>Nexo</strong>. Point <code>custom_item</code> at the provider and its item id:</p>
+                <pre><code>custom_item: "itemsadder:namespace:my_balloon"
+custom_item: "oraxen:my_balloon"
+custom_item: "nexo:my_balloon"</code></pre>
+                <p>The word before the first colon selects the provider — <code>itemsadder</code> (or <code>ia</code>), <code>oraxen</code> or <code>nexo</code>. Everything after it is that provider's own id, which is why an ItemsAdder id keeps its own colon. The same key works on a part's entry and on each flipbook frame, so a composite or animated model can mix foreign items with plain ones.</p>
+
+                <div class="callout">
+                    <strong>No hard dependency.</strong> The three plugins are reached by reflection, so ManyBalloons runs whether or not they are installed. A <code>custom_item</code> that cannot be resolved falls back to the balloon's <code>material</code> and leaves a single warning in the console, so a typo is never silent. Set the key to <code>none</code> to turn it off. Add or rename an item in the other plugin, then run <code>/balloons reload</code> so ManyBalloons reads it again.
+                </div>
 
                 <h2>Crafting recipes</h2>
                 <p>Add a <code>recipe</code> section to make the balloon craftable. With a <code>shape</code> it is a shaped recipe using the characters from <code>ingredients</code>; without one it is shapeless. The crafted item carries the balloon's id, so using it equips that balloon.</p>
@@ -425,18 +439,18 @@ offset:
                 <pre><code>&lt;dependency&gt;
   &lt;groupId&gt;dev.mugi&lt;/groupId&gt;
   &lt;artifactId&gt;manyballoons-api&lt;/artifactId&gt;
-  &lt;version&gt;1.0.0&lt;/version&gt;
+  &lt;version&gt;1.1.0&lt;/version&gt;
   &lt;scope&gt;provided&lt;/scope&gt;
 &lt;/dependency&gt;</code></pre>
                 <p>If it isn't published to a repository you use, install the downloaded jar into your local one:</p>
                 <pre><code>mvn install:install-file -Dfile=manyballoons-api.jar \
   -DgroupId=dev.mugi -DartifactId=manyballoons-api \
-  -Dversion=1.0.0 -Dpackaging=jar</code></pre>
+  -Dversion=1.1.0 -Dpackaging=jar</code></pre>
                 <p><strong>Gradle</strong> — drop the jar in <code>libs/</code> and point at it directly:</p>
                 <pre><code>dependencies {
     compileOnly files("libs/manyballoons-api.jar")
     // or, once it is in a repository:
-    // compileOnly "dev.mugi:manyballoons-api:1.0.0"
+    // compileOnly "dev.mugi:manyballoons-api:1.1.0"
 }</code></pre>
 
                 <h2>Declare it in plugin.yml</h2>
@@ -468,7 +482,7 @@ int free = api.remainingSlots(player);</code></pre>
             </section>
 
             <section class="page" id="page-api-reference" data-group="API"
-                     data-title="API reference" data-keywords="balloonapi methods hasballoon canuse equip remaining slots unequip equipped ids balloons getballoon balloon record id displayname material category permission ispublic animation events equipevent unequipevent cancellable">
+                     data-title="API reference" data-keywords="balloonapi methods hasballoon canuse equip remaining slots unequip equipped ids balloons getballoon balloon record id displayname material category permission ispublic animation customitem custom_item itemsadder oraxen nexo events equipevent unequipevent cancellable">
                 <div class="crumbs">API</div>
                 <h1>API reference</h1>
 
@@ -503,6 +517,7 @@ int free = api.remainingSlots(player);</code></pre>
                         <tr><td><code>material()</code></td><td><code>Material</code></td><td>The item whose model is rendered.</td></tr>
                         <tr><td><code>skullTexture()</code></td><td><code>String</code></td><td>Base64 head texture, or <code>null</code> for none.</td></tr>
                         <tr><td><code>customModelData()</code></td><td><code>int</code></td><td>The item's <code>custom_model_data</code>, <code>0</code> when unset.</td></tr>
+                        <tr><td><code>customItem()</code></td><td><code>String</code></td><td>The ItemsAdder/Oraxen/Nexo <code>provider:id</code> this balloon renders, or <code>null</code> when it is built from <code>material()</code>.</td></tr>
                         <tr><td><code>lore()</code></td><td><code>List&lt;String&gt;</code></td><td>Tooltip lines shown with the menu item.</td></tr>
                         <tr><td><code>animation()</code></td><td><code>String</code></td><td>Name of the motion applied while it's out.</td></tr>
                         <tr><td><code>category()</code></td><td><code>String</code></td><td>Sub-folder it came from, or <code>"default"</code>.</td></tr>

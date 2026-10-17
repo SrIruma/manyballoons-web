@@ -10,6 +10,9 @@ Every balloon and every motion is defined in simple YAML files, so you can shape
 [B]Custom models[/B]
 Textured heads, item displays, or a composite model built from as many parts as you like.
 
+[B]Items from your item plugin[/B]
+Render an ItemsAdder, Oraxen or Nexo item as a balloon, a part, a flipbook frame or a menu icon.
+
 [B]Real rope[/B]
 An invisible leashed entity draws the string, so the balloon is tethered correctly from every angle.
 
