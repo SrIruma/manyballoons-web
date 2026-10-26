@@ -1,0 +1,3 @@
+ManyBalloons v1.0.1
+
+Fixed a duplicated leash rope that could appear when flying with elytra and fireworks. Rope anchors are now re-attached reliably and invalid anchors are cleaned up instead of being left behind.
