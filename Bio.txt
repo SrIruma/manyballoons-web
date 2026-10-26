@@ -1,8 +1,5 @@
-[CENTER][SIZE=6][B][COLOR=#2BB0FF]ManyBalloons v1.0.1[/COLOR][/B][/SIZE]
+[CENTER][SIZE=6][B][COLOR=#2BB0FF]ManyBalloons[/COLOR][/B][/SIZE]
 [SIZE=4]Cosmetic floating balloons with real ropes, living physics and custom models.[/SIZE][/CENTER]
-[HR]
-[B][SIZE=4][COLOR=#2BB0FF]v1.0.1 Update[/COLOR][/SIZE][/B]
-Fixed a duplicated leash rope that could appear when flying with elytra and fireworks. Rope anchors are now re-attached reliably and invalid anchors are cleaned up instead of being left behind.
 [HR]
 [B][SIZE=5]Give every player a balloon that actually moves[/SIZE][/B]
 ManyBalloons tethers a custom balloon model to each player with a real rope. It swings when they run, drifts in the wind, floats up in water and trembles when danger is close, so it feels alive instead of glued in place.
