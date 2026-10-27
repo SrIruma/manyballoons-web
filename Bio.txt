@@ -70,7 +70,10 @@ manyballoons.slots.<n>[/CODE]
 [LIST]
 [*]Paper 1.21+
 [*]Java 21+
-[*]PlaceholderAPI (optional, only for the placeholders)
+[*]PlaceholderAPI (optional, only for the placeholders) - https://www.spigotmc.org/resources/placeholderapi.6245/
+[*]ItemsAdder (optional, only to render its items as balloons) - https://www.spigotmc.org/resources/itemsadder.73355/
+[*]Oraxen (optional, only to render its items as balloons) - https://github.com/oraxen/oraxen
+[*]Nexo (optional, only to render its items as balloons) - https://www.spigotmc.org/resources/nexo.114119/
 [/LIST]
 
 [B][SIZE=4][COLOR=#2BB0FF]Notes[/COLOR][/SIZE][/B]
